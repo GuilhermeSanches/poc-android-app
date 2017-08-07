@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     @Override
-    public void onCreate(final SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         /**
          * Creating database
@@ -67,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(final SQLiteDatabase sqLiteDatabase, final int i, final  int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i,  int i1) {
 
         /**
          * Updatating database
@@ -85,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param context context app.
      * @return An instance of DatabaseHelper.
      */
-    public static synchronized DatabaseHelper getDBHelper(final Context context) {
+    public static synchronized DatabaseHelper getDBHelper(Context context) {
         if (getDBHelper == null) {
             getDBHelper = new DatabaseHelper(context);
         }

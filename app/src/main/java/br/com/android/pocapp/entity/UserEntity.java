@@ -1,12 +1,11 @@
-package br.com.android.pocapp.model;
+package br.com.android.pocapp.entity;
 
 /**
  * Created by guilherme.sanches on 07/08/2017.
- * Model for a user
+ * Entity of User
  */
 
-public class User {
-
+public class UserEntity {
     /**
      * The id from the user.
      */

@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void RegisterNewUser(View view) {
-
+        Intent intent = new Intent(this, UserInfoActivity.class);
+        startActivity(intent);
     }
 }
