@@ -14,6 +14,17 @@ import br.com.android.pocapp.constants.ConstantsUserInfoTable;
  * Class to create POC database.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    /**
+     * Database version.
+     */
+    private static final int DATABASE_VERSION = 1;
+
+    /**
+     * Database name.
+     */
+    private static final String DATABASE_NAME = "poc.db";
+
     /**
      * Create table user info.
      */
@@ -29,12 +40,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + ConstantsGlobalDatabase.COLUMN_DATE_CREATE + "default CURRENT_TIMESTAMP"
                     + ")";
 
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
+                          int version) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(final SQLiteDatabase sqLiteDatabase) {
+
         /**
          * Creating database
          */
@@ -45,7 +59,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(final SQLiteDatabase sqLiteDatabase, final int i, final  int i1) {
+
+        /**
+         * Updatating database
+         */
+        if (sqLiteDatabase != null) {
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + ConstantsUserInfoTable.TABLE_USER_INFO);
+        }
+        onCreate(sqLiteDatabase);
 
     }
 }
