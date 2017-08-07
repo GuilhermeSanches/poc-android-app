@@ -16,6 +16,11 @@ import br.com.android.pocapp.constants.ConstantsUserInfoTable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
+     * Instance of class.
+     */
+    private static DatabaseHelper getDBHelper;
+
+    /**
      * Database version.
      */
     private static final int DATABASE_VERSION = 1;
@@ -32,19 +37,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE "
                     + ConstantsUserInfoTable.TABLE_USER_INFO
                     + "("
-                    + ConstantsUserInfoTable.COLUMN_ID + " INTEGER PRIMARY KEY,"
+                    + ConstantsUserInfoTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                     + ConstantsUserInfoTable.COLUMN_USERNAME + " TEXT,"
+                    + ConstantsUserInfoTable.COLUMN_PASSWORD + " TEXT,"
                     + ConstantsUserInfoTable.COLUMN_EMAIL + " TEXT,"
                     + ConstantsUserInfoTable.COLUMN_PHONE + " TEXT,"
                     + ConstantsUserInfoTable.COLUMN_CPF + " TEXT,"
                     + ConstantsGlobalDatabase.COLUMN_DATE_CREATE + "default CURRENT_TIMESTAMP"
                     + ")";
 
-
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
-                          int version) {
+    /**
+     * Constructor of class
+     */
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(final SQLiteDatabase sqLiteDatabase) {
@@ -69,5 +77,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         onCreate(sqLiteDatabase);
 
+    }
+
+    /**
+     * Get instance of DatabaseHelper.
+     *
+     * @param context context app.
+     * @return An instance of DatabaseHelper.
+     */
+    public static synchronized DatabaseHelper getDBHelper(final Context context) {
+        if (getDBHelper == null) {
+            getDBHelper = new DatabaseHelper(context);
+        }
+        return getDBHelper;
     }
 }

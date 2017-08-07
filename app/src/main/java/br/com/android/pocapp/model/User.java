@@ -18,6 +18,11 @@ public class User {
     private String mUserName;
 
     /**
+     * The password from the user.
+     */
+    private String mUserPassword;
+
+    /**
      * The email from the user.
      */
     private String mUserEmail;
@@ -32,8 +37,51 @@ public class User {
      */
     private String mUserPhone;
 
-    /**
-     * The password from the user.
-     */
-    private String mUserPassword;
+    public Long getmUserId() {
+        return mUserId;
+    }
+
+    public void setmUserId(Long mUserId) {
+        this.mUserId = mUserId;
+    }
+
+    public String getmUserName() {
+        return mUserName;
+    }
+
+    public void setmUserName(String mUserName) {
+        this.mUserName = mUserName;
+    }
+
+    public String getmUserPassword() {
+        return mUserPassword;
+    }
+
+    public void setmUserPassword(String mUserPassword) {
+        this.mUserPassword = mUserPassword;
+    }
+
+    public String getmUserEmail() {
+        return mUserEmail;
+    }
+
+    public void setmUserEmail(String mUserEmail) {
+        this.mUserEmail = mUserEmail;
+    }
+
+    public String getmUserCpf() {
+        return mUserCpf;
+    }
+
+    public void setmUserCpf(String mUserCpf) {
+        this.mUserCpf = mUserCpf;
+    }
+
+    public String getmUserPhone() {
+        return mUserPhone;
+    }
+
+    public void setmUserPhone(String mUserPhone) {
+        this.mUserPhone = mUserPhone;
+    }
 }

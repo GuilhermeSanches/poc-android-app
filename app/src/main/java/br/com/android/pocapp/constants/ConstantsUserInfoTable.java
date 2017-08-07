@@ -28,6 +28,11 @@ public abstract class ConstantsUserInfoTable {
     public static final String COLUMN_EMAIL= "email";
 
     /**
+     * Table column password.
+     */
+    public static final String COLUMN_PASSWORD= "password";
+
+    /**
      * Table column phone number.
      */
     public static final String COLUMN_PHONE= "phone";
