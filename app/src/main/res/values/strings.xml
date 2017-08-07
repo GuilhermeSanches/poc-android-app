@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PocApp</string>
+    <string name="splash_activity_title">Login</string>
+</resources>
