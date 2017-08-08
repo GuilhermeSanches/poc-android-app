@@ -1,8 +1,10 @@
 package br.com.android.pocapp.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.constraint.ConstraintLayout;
 
 import br.com.android.pocapp.constants.ConstantsGlobalDatabase;
 import br.com.android.pocapp.constants.ConstantsUserInfoTable;

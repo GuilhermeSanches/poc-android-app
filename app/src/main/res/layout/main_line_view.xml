@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/circle_photo_section"
+                android:layout_width="40dp"
+                android:background="@color/colorAccent"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:id="@+id/film_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/film_first_letter_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:singleLine="true"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sub_title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:paddingLeft="4dp"
+                        android:gravity="start"
+                        android:paddingTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="#000"
+                        android:textSize="12sp"
+                        android:layout_marginRight="8dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="0dp" />
+                    <TextView
+                        android:id="@+id/sub_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="#000"
+                        android:textSize="12sp"
+                        tools:layout_editor_absoluteY="0dp"
+                        app:layout_constraintRight_toLeftOf="@+id/sub_title2"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0" />
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

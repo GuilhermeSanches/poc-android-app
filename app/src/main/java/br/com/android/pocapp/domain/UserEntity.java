@@ -1,4 +1,4 @@
-package br.com.android.pocapp.entity;
+package br.com.android.pocapp.domain;
 
 /**
  * Created by guilherme.sanches on 07/08/2017.

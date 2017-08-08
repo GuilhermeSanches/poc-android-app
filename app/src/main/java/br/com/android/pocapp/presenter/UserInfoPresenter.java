@@ -1,12 +1,11 @@
 package br.com.android.pocapp.presenter;
 
 import android.content.Context;
+import android.widget.Toast;
 
-import br.com.android.pocapp.dao.UserInfoDao;
-import br.com.android.pocapp.entity.UserEntity;
+import br.com.android.pocapp.domain.UserEntity;
 import br.com.android.pocapp.model.UserModel;
-import br.com.android.pocapp.model.UserModel;
-import br.com.android.pocapp.view.UserInfoActivity;
+import br.com.android.pocapp.view.activities.UserInfoActivity;
 
 /**
  * Created by guilherme.sanches on 07/08/2017.
@@ -35,8 +34,8 @@ public class UserInfoPresenter {
      * Method to persist user in database
      * @param user object
      */
-    public void insertNewUser(UserEntity user){
-        mModelUser.insertNewUser(user);
+    public boolean insertNewUser(UserEntity user){
+        return mModelUser.insertNewUser(user);
     }
 
     /**
@@ -50,4 +49,12 @@ public class UserInfoPresenter {
         }
     }
 
+    public void checkUserRegistration(boolean results) {
+        if(results){
+            Toast.makeText(mUserInfoActivity, "Usuário salvo com sucesso.", Toast.LENGTH_LONG).show();
+            mUserInfoActivity.backView();
+        }else{
+            Toast.makeText(mUserInfoActivity, "Erro ao salvar usuário.", Toast.LENGTH_LONG).show();
+        }
+    }
 }

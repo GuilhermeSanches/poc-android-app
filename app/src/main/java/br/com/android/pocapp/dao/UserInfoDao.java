@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 
 import br.com.android.pocapp.constants.ConstantsUserInfoTable;
-import br.com.android.pocapp.entity.UserEntity;
+import br.com.android.pocapp.domain.UserEntity;
 
 /**
  * Created by guilherme.sanches on 07/08/2017.

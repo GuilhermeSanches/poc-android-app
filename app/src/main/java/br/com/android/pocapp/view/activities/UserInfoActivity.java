@@ -1,18 +1,18 @@
-package br.com.android.pocapp.view;
+package br.com.android.pocapp.view.activities;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import br.com.android.pocapp.R;
-import br.com.android.pocapp.entity.UserEntity;
+import br.com.android.pocapp.domain.UserEntity;
 import br.com.android.pocapp.presenter.UserInfoPresenter;
 
 public class UserInfoActivity extends AppCompatActivity {
-
 
     /*
      * Presenter User Info instance
@@ -104,7 +104,16 @@ public class UserInfoActivity extends AppCompatActivity {
      * @param user
      */
     public void insertNewUser (UserEntity user){
-        this.mPresenterUser.insertNewUser(user);
+        boolean results = this.mPresenterUser.insertNewUser(user);
+        showToast(results);
+    }
+
+    private void showToast(boolean results) {
+        mPresenterUser.checkUserRegistration(results);
+    }
+
+    public void backView() {
+        finish();
     }
 
     /**
