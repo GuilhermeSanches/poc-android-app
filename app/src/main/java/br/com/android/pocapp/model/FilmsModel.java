@@ -22,22 +22,31 @@ public class FilmsModel{
      * TAG for Logs
      */
     private static final String TAG = "FilmsModel";
-    private static AsyncHttpClient client = new AsyncHttpClient();
 
     /**
      * Instance of presenter
      */
     private HomePresenter mPresenterHome;
 
-
+    /**
+     * Constructor of model
+     * @param mPresenterHome
+     */
     public FilmsModel(HomePresenter mPresenterHome) {
         this.mPresenterHome = mPresenterHome;
     }
 
+    /**
+     * Method to list all films of StarWars API
+     * @throws JSONException
+     */
     public void list() throws JSONException {
         HttpUtils.get("films", null, responseList);
     }
 
+    /**
+     * Callback to method get list all
+     */
     public JsonHttpResponseHandler responseList = new JsonHttpResponseHandler() {
         @Override
         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

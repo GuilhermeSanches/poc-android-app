@@ -18,6 +18,9 @@ public class MainPresenter {
      */
     private MainActivity mLoginActivity;
 
+    /**
+     * Instance of model
+     */
     private LoginModel mLoginModel;
 
     /*

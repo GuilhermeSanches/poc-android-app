@@ -10,21 +10,34 @@ import com.loopj.android.http.RequestParams;
  */
 
 public class HttpUtils {
-        private static final String BASE_URL = "https://swapi.co/api/";
 
-        private static AsyncHttpClient client = new AsyncHttpClient();
+    /**
+     * BASE_URL to api rest of StarWars
+     */
+    private static final String BASE_URL = "https://swapi.co/api/";
 
+    /**
+     * Instance of client AsyncHttpClient
+     */
+    private static AsyncHttpClient client = new AsyncHttpClient();
 
-        public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-            client.setEnableRedirects(true);
-            client.get(getAbsoluteUrl(url), params, responseHandler);
-        }
+    /**
+     * Method get generic in client http
+     * @param url
+     * @param params
+     * @param responseHandler
+     */
+    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.setEnableRedirects(true);
+        client.get(getAbsoluteUrl(url), params, responseHandler);
+    }
 
-        public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-            client.post(getAbsoluteUrl(url), params, responseHandler);
-        }
-
-        private static String getAbsoluteUrl(String relativeUrl) {
-            return BASE_URL + relativeUrl;
-        }
+    /**
+     * Build url with resources in param
+     * @param relativeUrl
+     * @return
+     */
+    private static String getAbsoluteUrl(String relativeUrl) {
+        return BASE_URL + relativeUrl;
+    }
 }

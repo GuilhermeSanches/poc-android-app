@@ -36,6 +36,11 @@ public class UserEntity {
      */
     private String mUserPhone;
 
+    /**
+     * getters and setters
+     * @return
+     */
+
     public Long getmUserId() {
         return mUserId;
     }

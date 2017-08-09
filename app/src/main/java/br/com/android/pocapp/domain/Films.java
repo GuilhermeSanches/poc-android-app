@@ -7,10 +7,25 @@ import java.util.Date;
  */
 
 public class Films {
+    /**
+     * Title of film
+     */
     private String mTitle;
+
+    /**
+     * Director name of the film
+     */
     private String mDirector;
+
+    /**
+     * Date release of the film
+     */
     private Date mReleaseDate;
 
+    /**
+     * getters and settes
+     * @return
+     */
     public String getmTitle() {
         return mTitle;
     }

@@ -19,6 +19,12 @@ public class LoginDao extends PocDao{
         super(context);
     }
 
+    /**
+     * Method that check email and password to login in app
+     * @param email
+     * @param password
+     * @return boolean if login did sucess
+     */
     public boolean getUser(String email, String password) {
 
         String selection =

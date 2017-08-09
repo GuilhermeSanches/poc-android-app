@@ -18,6 +18,9 @@ import br.com.android.pocapp.presenter.HomePresenter;
 
 public class HomeActivity extends AppCompatActivity {
 
+    /**
+     * Variable of presenter view
+     */
     private HomePresenter mPresenterHome;
 
     @Override
@@ -25,9 +28,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // Start presenter view
         mPresenterHome = new HomePresenter(this);
     }
 
+
+    /**
+     * Inflater menu itens
+     * @param menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -35,6 +44,10 @@ public class HomeActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     *  Logic of event click in menu items.
+      * @param item
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -47,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // Get list films StarWarS
         mPresenterHome.list();
     }
 

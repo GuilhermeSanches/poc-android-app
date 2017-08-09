@@ -31,16 +31,35 @@ public class HomePresenter {
      */
     private HomeActivity mHomeActivity;
 
+    /**
+     * Adapter to recycleView
+     */
     private RecyclerView.Adapter mAdapter;
 
+    /**
+     * RecycleView in UI
+     */
     private RecyclerView mRecyclerView;
 
+    /**
+     * Instance of model
+     */
     private FilmsModel mFilmsModel;
 
+    /**
+     * Array of model to adapter
+     */
     private ArrayList<Films> mListFilms;
 
+    /**
+     * LayoutManager to handle recycleView
+     */
     private RecyclerView.LayoutManager mLayoutManager;
 
+    /**
+     * Constructor of class
+     * @param mHomeActivity
+     */
     public HomePresenter(HomeActivity mHomeActivity) {
         this.mHomeActivity = mHomeActivity;
         this.mFilmsModel = new FilmsModel(this);
@@ -51,6 +70,9 @@ public class HomePresenter {
         mListFilms = new ArrayList<Films>();
     }
 
+    /**
+     * Call method list in model
+     */
     public void list() {
         try {
             mFilmsModel.list();
@@ -59,6 +81,12 @@ public class HomePresenter {
         }
     }
 
+    /**
+     * Callback call after of asyncTask http finished
+     * Parse {@link JSONObject} to {@link ArrayList}
+     * and set adapter to {@link RecyclerView}
+     * @param response of API
+     */
     public void receiveList(JSONObject response) {
         ArrayList<Films> films = new ArrayList<Films>();
         try {
@@ -76,7 +104,6 @@ public class HomePresenter {
         }
 
         mAdapter = new FilmsAdapter(films);
-        Log.i("Teste", ""+films.size());
         mRecyclerView.setAdapter(mAdapter);
 
     }

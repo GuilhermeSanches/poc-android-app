@@ -25,6 +25,9 @@ public class UserInfoPresenter {
     private UserModel mModelUser;
 
 
+    /*
+     * Constructor of class Presenter
+     */
     public UserInfoPresenter(UserInfoActivity userInfoActivity) {
         this.mUserInfoActivity = userInfoActivity;
         this.mModelUser = new UserModel(this);
@@ -49,6 +52,10 @@ public class UserInfoPresenter {
         }
     }
 
+    /**
+     * Method to check if user was created with sucess
+     * @param results toast showing message of sucess or not
+     */
     public void checkUserRegistration(boolean results) {
         if(results){
             Toast.makeText(mUserInfoActivity, "Usuário salvo com sucesso.", Toast.LENGTH_LONG).show();
@@ -58,8 +65,11 @@ public class UserInfoPresenter {
         }
     }
 
+    /**
+     * Method to validate empty fields in view
+     * @return boolean false if match empty string in any field
+     */
     public boolean checkFieldsEmpty() {
-
         if ((mUserInfoActivity.getmUserEmail().getText().toString().trim().matches("")) ||
                 (mUserInfoActivity.getmUserCpf().getText().toString().trim().matches("")) ||
                 (mUserInfoActivity.getmUserName().getText().toString().trim().matches("")) ||
@@ -70,6 +80,9 @@ public class UserInfoPresenter {
         return true;
     }
 
+    /**
+     * Toast to show empty fields
+     */
     public void showToastEmptyFields() {
         Toast.makeText(mUserInfoActivity, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
     }

@@ -27,11 +27,21 @@ public class LoginModel {
      */
     private LoginDao mLoginDao;
 
+    /**
+     * Constructor of class
+     * @param presenter
+     */
     public LoginModel(MainPresenter presenter) {
         this.mMainPresenter = presenter;
         mLoginDao = new LoginDao(mMainPresenter.getActivityContext());
     }
 
+    /**
+     * Call method login in DAO
+     * @param email
+     * @param password
+     * @return status of login
+     */
     public boolean doLogin(String email, String password) {
         boolean results = mLoginDao.doLogin(email, password);
         Log.i(TAG, "Sql login user: "+results);
