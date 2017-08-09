@@ -11,32 +11,24 @@ import java.util.Date;
 import br.com.android.pocapp.R;
 import br.com.android.pocapp.adapter.FilmsAdapter;
 import br.com.android.pocapp.domain.Films;
+import br.com.android.pocapp.presenter.HomePresenter;
 
 public class HomeActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+
+    private HomePresenter mPresenterHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        Films films = new Films();
-        films.setmTitle("Teste");
-        films.setmDirector("Teste Diretor");
-        films.setmReleaseDate(new Date());
-
-        ArrayList<Films> list = new ArrayList<Films>();
-        list.add(films);
-        mAdapter = new FilmsAdapter(list);
-        mRecyclerView.setAdapter(mAdapter);
-
+        mPresenterHome = new HomePresenter(this);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenterHome.list();
+    }
+
 }
