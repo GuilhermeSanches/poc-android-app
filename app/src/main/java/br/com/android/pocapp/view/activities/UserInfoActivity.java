@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -68,7 +69,12 @@ public class UserInfoActivity extends AppCompatActivity {
     public Button.OnClickListener RegisterClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            insertNewUser(getUserData());
+            if (mPresenterUser.checkFieldsEmpty()){
+                Log.i("etste", ""+mUserName.getText().toString().trim());
+                insertNewUser(getUserData());
+            } else {
+                mPresenterUser.showToastEmptyFields();
+            }
         }
     };
 
@@ -129,4 +135,48 @@ public class UserInfoActivity extends AppCompatActivity {
     public Context getAppContext() {
         return getApplicationContext();
     }
+
+    /**
+     * Getters and setters
+     */
+    public EditText getmUserName() {
+        return mUserName;
+    }
+
+    public void setmUserName(EditText mUserName) {
+        this.mUserName = mUserName;
+    }
+
+    public EditText getmUserEmail() {
+        return mUserEmail;
+    }
+
+    public void setmUserEmail(EditText mUserEmail) {
+        this.mUserEmail = mUserEmail;
+    }
+
+    public EditText getmUserPassword() {
+        return mUserPassword;
+    }
+
+    public void setmUserPassword(EditText mUserPassword) {
+        this.mUserPassword = mUserPassword;
+    }
+
+    public EditText getmUserPhone() {
+        return mUserPhone;
+    }
+
+    public void setmUserPhone(EditText mUserPhone) {
+        this.mUserPhone = mUserPhone;
+    }
+
+    public EditText getmUserCpf() {
+        return mUserCpf;
+    }
+
+    public void setmUserCpf(EditText mUserCpf) {
+        this.mUserCpf = mUserCpf;
+    }
+
 }

@@ -57,4 +57,20 @@ public class UserInfoPresenter {
             Toast.makeText(mUserInfoActivity, "Erro ao salvar usuário.", Toast.LENGTH_LONG).show();
         }
     }
+
+    public boolean checkFieldsEmpty() {
+
+        if ((mUserInfoActivity.getmUserEmail().getText().toString().trim().matches("")) ||
+                (mUserInfoActivity.getmUserCpf().getText().toString().trim().matches("")) ||
+                (mUserInfoActivity.getmUserName().getText().toString().trim().matches("")) ||
+                (mUserInfoActivity.getmUserPhone().getText().toString().trim().matches("")) ||
+                (mUserInfoActivity.getmUserPassword().getText().toString().trim().matches(""))){
+            return false;
+        }
+        return true;
+    }
+
+    public void showToastEmptyFields() {
+        Toast.makeText(mUserInfoActivity, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
+    }
 }
