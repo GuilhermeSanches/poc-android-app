@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dialer.view.activity.EditContactActivity">
+
+    <item
+        android:id="@+id/action_boot_info"
+        android:orderInCategory="100"
+        android:title="Boot info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:title="Atualizar"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="100"
+        android:title="Sair"
+        app:showAsAction="never" />
+</menu>
