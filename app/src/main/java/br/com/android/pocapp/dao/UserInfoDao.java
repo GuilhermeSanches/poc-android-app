@@ -27,7 +27,6 @@ public class UserInfoDao extends PocDao {
      */
     public final boolean insertUserInfo(UserEntity user){
         ContentValues values;
-        boolean result;
 
         values = new ContentValues();
         values.put(ConstantsUserInfoTable.COLUMN_USERNAME,

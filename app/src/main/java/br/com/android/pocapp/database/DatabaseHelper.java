@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.constraint.ConstraintLayout;
 
+import br.com.android.pocapp.constants.ConstantsBootInfoTable;
 import br.com.android.pocapp.constants.ConstantsGlobalDatabase;
 import br.com.android.pocapp.constants.ConstantsUserInfoTable;
 
@@ -49,6 +50,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + ")";
 
     /**
+     * Create table boot info.
+     */
+    private static final String CREATE_TABLE_BOOT_INFO =
+            "CREATE TABLE "
+                    + ConstantsBootInfoTable.TABLE_BOOT_INFO
+                    + "("
+                    + ConstantsBootInfoTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                    + ConstantsBootInfoTable.COLUMN_TYPE + " INTEGER,"
+                    + ConstantsBootInfoTable.COLUMN_TIME + " default CURRENT_TIMESTAMP"
+                    + ")";
+
+    /**
      * Constructor of class
      */
     public DatabaseHelper(Context context) {
@@ -64,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          */
         if (sqLiteDatabase != null) {
             sqLiteDatabase.execSQL(CREATE_TABLE_USER_INFO);
+            sqLiteDatabase.execSQL(CREATE_TABLE_BOOT_INFO);
         }
 
     }
@@ -76,6 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          */
         if (sqLiteDatabase != null) {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + ConstantsUserInfoTable.TABLE_USER_INFO);
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + ConstantsBootInfoTable.TABLE_BOOT_INFO);
         }
         onCreate(sqLiteDatabase);
 

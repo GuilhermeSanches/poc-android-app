@@ -64,7 +64,7 @@ public class HomePresenter {
         this.mHomeActivity = mHomeActivity;
         this.mFilmsModel = new FilmsModel(this);
         mRecyclerView = (RecyclerView) mHomeActivity.findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(false);
         mLayoutManager = new LinearLayoutManager(mHomeActivity);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mListFilms = new ArrayList<Films>();

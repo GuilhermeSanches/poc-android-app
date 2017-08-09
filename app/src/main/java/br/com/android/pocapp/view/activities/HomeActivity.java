@@ -1,5 +1,7 @@
 package br.com.android.pocapp.view.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,6 +55,9 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.logout:
                 finish();
+            case R.id.action_boot_info:
+                Intent intent = new Intent(this, BootInfoActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
