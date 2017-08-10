@@ -33,4 +33,8 @@ public class BootInfoModel {
     public Cursor getByType(String type) {
         return mBootDao.getByType(type);
     }
+
+    public Cursor getByDate(int year, int month, int day) {
+        return mBootDao.getByDate(year, month, day);
+    }
 }

@@ -6,21 +6,15 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import br.com.android.pocapp.R;
 import br.com.android.pocapp.adapter.BootAdapter;
 import br.com.android.pocapp.constants.ConstantsBootInfoTable;
-import br.com.android.pocapp.constants.ConstantsUserInfoTable;
 import br.com.android.pocapp.domain.BootInfo;
 import br.com.android.pocapp.model.BootInfoModel;
 import br.com.android.pocapp.view.activities.BootInfoActivity;
@@ -157,5 +151,11 @@ public class BootPresenter {
         } catch (NullPointerException e) {
             return null;
         }
+    }
+
+    public void getByDate(int year, int month, int day) {
+        Cursor cursor =  mBootModel.getByDate(year, month, day);
+        ArrayList<BootInfo> list =  formatData(cursor);
+        setAdapterView(list);
     }
 }

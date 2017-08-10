@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.SimpleFormatter;
 
 import br.com.android.pocapp.constants.ConstantsBootInfoTable;
 
@@ -97,5 +100,45 @@ public class BootDao extends PocDao{
 
         return cursor;
 
+    }
+
+    public Cursor getByDate(int year, int month, int day) {
+        String date = formatDateToQuery(year, month, day);
+
+        // columns to be returned
+        String[] columns = {
+                "*"
+        };
+
+        String selection =
+                "date("+ConstantsBootInfoTable.COLUMN_TIME + ") = ?";
+
+        String[] selectionArgs = {
+                date
+        };
+
+
+        // Query user in table
+        Cursor cursor = database.query(
+                //Table to query
+                ConstantsBootInfoTable.TABLE_BOOT_INFO,
+                //columns to be returned
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+    }
+
+    private String formatDateToQuery(int year, int month, int day) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        return format.format(calendar.getTime());
     }
 }

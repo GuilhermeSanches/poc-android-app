@@ -1,5 +1,6 @@
 package br.com.android.pocapp.view.activities;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -24,16 +26,20 @@ import br.com.android.pocapp.R;
 import br.com.android.pocapp.adapter.BootAdapter;
 import br.com.android.pocapp.presenter.BootPresenter;
 
-public class BootInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class BootInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,  DatePickerDialog.OnDateSetListener {
 
     /**
      * Instance of presenter view
      */
     private BootPresenter mBootPresenter;
+
+    DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot_info);
+        datePickerDialog = new DatePickerDialog(
+                this.getActivityContext(), this, 2017, 7, 10);
 
         mBootPresenter = new BootPresenter(this);
 
@@ -63,6 +69,18 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.calendar:
+                datePickerDialog.show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /*
      * Return this context view
      */
@@ -89,5 +107,10 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         return;
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        mBootPresenter.getByDate(year, month, day);
     }
 }
