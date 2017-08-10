@@ -9,7 +9,7 @@ What was used ?
 In this small example application, the following patterns and features have been used ... 
 
 > **Patterns:**
-
+>
 > - Design Pattern M-V-P.
 > - Code Conventions .
 > - Material Designer.
@@ -33,6 +33,10 @@ In this small example application, the following patterns and features have been
 > - CollapsedToolbar.
 > - Spinner.
 
+> **Broadcast receiver:**
+> 
+> - ACTION_BOOT_COMPLETED.
+> - ACTION_SHUTDOWN.
 
 ----------
 
