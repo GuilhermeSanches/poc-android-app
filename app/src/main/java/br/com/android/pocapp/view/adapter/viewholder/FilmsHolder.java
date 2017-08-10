@@ -1,12 +1,8 @@
-package br.com.android.pocapp.adapter.viewholder;
+package br.com.android.pocapp.view.adapter.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Date;
 
 import br.com.android.pocapp.R;
 

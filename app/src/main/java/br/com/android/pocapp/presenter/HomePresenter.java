@@ -1,22 +1,19 @@
 package br.com.android.pocapp.presenter;
 
-import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 import br.com.android.pocapp.R;
-import br.com.android.pocapp.adapter.FilmsAdapter;
+import br.com.android.pocapp.view.adapter.FilmsAdapter;
 import br.com.android.pocapp.domain.Films;
 import br.com.android.pocapp.model.FilmsModel;
 import br.com.android.pocapp.view.activities.HomeActivity;
@@ -96,15 +93,29 @@ public class HomePresenter {
                 Films film = new Films();
                 film.setmTitle(obj.getString("title"));
                 film.setmDirector(obj.getString("director"));
-                film.setmReleaseDate(new Date());
+                film.setmReleaseDate(formatDate(obj.getString("release_date")));
                 films.add(film);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        mAdapter = new FilmsAdapter(films);
+        mAdapter = new FilmsAdapter(films, mHomeActivity);
         mRecyclerView.setAdapter(mAdapter);
 
+    }
+
+    /*
+     * Format date String to Date
+     */
+    private Date formatDate(String dateStr){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date =  format.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 }

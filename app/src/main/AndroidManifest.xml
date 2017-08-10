@@ -28,7 +28,7 @@
         <activity
             android:name=".view.activities.HomeActivity"
             android:label="Home" />
-        <activity android:name=".view.activities.BootInfoActivity"></activity>
+        <activity android:label="Boot Info" android:name=".view.activities.BootInfoActivity"></activity>
         <receiver
             android:name="br.com.android.pocapp.broadcasts.BootBroadcast">
             <intent-filter >

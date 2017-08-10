@@ -1,4 +1,4 @@
-package br.com.android.pocapp.adapter;
+package br.com.android.pocapp.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import br.com.android.pocapp.R;
 
-import br.com.android.pocapp.adapter.viewholder.BootHolder;
+import br.com.android.pocapp.view.adapter.viewholder.BootHolder;
 import br.com.android.pocapp.domain.BootInfo;
 
 /**

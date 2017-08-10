@@ -6,6 +6,7 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import br.com.android.pocapp.R;
-import br.com.android.pocapp.adapter.BootAdapter;
+import br.com.android.pocapp.view.adapter.BootAdapter;
 import br.com.android.pocapp.constants.ConstantsBootInfoTable;
 import br.com.android.pocapp.domain.BootInfo;
 import br.com.android.pocapp.model.BootInfoModel;
@@ -48,7 +49,8 @@ public class BootPresenter {
     /**
      * Adapter to {@link RecyclerView}
      */
-    private BootAdapter adapter;
+    private BootAdapter mAdapter;
+
 
     /**
      * Constructor of class
@@ -71,9 +73,10 @@ public class BootPresenter {
         setAdapterView(list);
     }
 
+
     /**
      * Method to call get with params type
-     * @param type
+     * @param type to filter
      */
     public void getByType(String type) {
         Cursor cursor =  mBootModel.getByType(type);
@@ -83,8 +86,8 @@ public class BootPresenter {
 
     /**
      * This method convert {@link Cursor} to {@link ArrayList}
-     * @param cursor
-     * @return
+     * @param cursor of the query
+     * @return aaray of boot info
      */
     private ArrayList<BootInfo> formatData(Cursor cursor) {
         ArrayList<BootInfo> mArrayList = new ArrayList<>();
@@ -103,42 +106,40 @@ public class BootPresenter {
     }
 
     /**
-     * Call method sabe in model
-     * @param type
-     */
-    public void saveEvent(Integer type) {
-        this.mBootModel.save(type);
-    }
-
-    /**
-     * Constructor of class
-     * @param list
+     * Check if list is empty and set adapter to {@link RecyclerView}
+     * @param list of bootInfo
      */
     private void setAdapterView(ArrayList<BootInfo> list) {
-        adapter = new BootAdapter(list);
-        mRecView.setAdapter(adapter);
+        mAdapter = new BootAdapter(list);
+        if (list.size() == 0){
+            mRecView.setVisibility(View.GONE);
+            mBootActivity.findViewById(R.id.empty_list).setVisibility(View.VISIBLE);
+        }else{
+            mRecView.setVisibility(View.VISIBLE);
+            mBootActivity.findViewById(R.id.empty_list).setVisibility(View.GONE);
+            mRecView.setAdapter(mAdapter);
+        }
     }
 
     /**
      * Method to format date in view
-     * @param date
-     * @return
+     * @param date string
+     * @return Date in string formatted
      */
-    public String getDateString(String date) {
-        Date dateFormat = null;
-        String strTest = null;
+    private String getDateString(String date) {
+        Date dateFormat;
+        Calendar calendar = null;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         try {
+            calendar = Calendar.getInstance();
             dateFormat = formatter.parse(date);
+            calendar.setTime(dateFormat);
+            calendar.add(Calendar.HOUR, -3);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Calendar calendar = Calendar.getInstance();
-        strTest = formatter2.format(dateFormat);
-        Date dateAux = new Date(strTest);
-        calendar.setTime(dateAux);
-        calendar.add(Calendar.HOUR, -3);
+
         return formatter2.format(calendar.getTime());
     }
 
@@ -153,6 +154,12 @@ public class BootPresenter {
         }
     }
 
+    /**
+     * Call method list filtering by date
+     * @param year of thedate
+     * @param month of the date
+     * @param day of the date
+     */
     public void getByDate(int year, int month, int day) {
         Cursor cursor =  mBootModel.getByDate(year, month, day);
         ArrayList<BootInfo> list =  formatData(cursor);
