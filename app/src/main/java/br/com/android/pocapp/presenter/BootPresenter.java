@@ -8,8 +8,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import br.com.android.pocapp.R;
 import br.com.android.pocapp.adapter.BootAdapter;
@@ -94,7 +100,8 @@ public class BootPresenter {
             bootInfo.setmType(cursor.getInt(cursor.getColumnIndex(ConstantsBootInfoTable.COLUMN_TYPE)));
             String strCursor = cursor.getString(cursor.getColumnIndex(
                             ConstantsBootInfoTable.COLUMN_TIME));
-            bootInfo.setmTime(strCursor);
+            String  dateFormated = getDateString(strCursor);
+            bootInfo.setmTime(dateFormated);
             mArrayList.add(bootInfo);
             cursor.moveToNext();
         }
@@ -120,15 +127,25 @@ public class BootPresenter {
 
     /**
      * Method to format date in view
-     * @param mili
-     * @param format
+     * @param date
      * @return
      */
-    public String getDateString(long mili, String format) {
-        SimpleDateFormat formatter = new SimpleDateFormat(format);
+    public String getDateString(String date) {
+        Date dateFormat = null;
+        String strTest = null;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        try {
+            dateFormat = formatter.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(mili);
-        return formatter.format(calendar.getTime());
+        strTest = formatter2.format(dateFormat);
+        Date dateAux = new Date(strTest);
+        calendar.setTime(dateAux);
+        calendar.add(Calendar.HOUR, -3);
+        return formatter2.format(calendar.getTime());
     }
 
     /**
