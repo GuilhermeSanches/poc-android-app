@@ -49,6 +49,12 @@ public class BootPresenter {
         setAdapterView(list);
     }
 
+    public void getByType(String type) {
+        Cursor cursor =  mBootModel.getByType(type);
+        ArrayList<BootInfo> list =  formatData(cursor);
+        setAdapterView(list);
+    }
+
     private ArrayList<BootInfo> formatData(Cursor cursor) {
         ArrayList<BootInfo> mArrayList = new ArrayList<>();
         cursor.moveToFirst();
@@ -58,11 +64,8 @@ public class BootPresenter {
             String strCursor = cursor.getString(cursor.getColumnIndex(
                             ConstantsBootInfoTable.COLUMN_TIME));
             Log.i("teste 2: ", strCursor);
-//            Long dateMili = new Date(strCursor).getTime();
-//            Log.i("teste 3: ", ""+dateMili);
-//            String str = getDateString(dateMili, "dd/MM/yyyy hh:mm:ss");
             bootInfo.setmTime(strCursor);
-            mArrayList.add(bootInfo); //add the item
+            mArrayList.add(bootInfo);
             cursor.moveToNext();
         }
         return mArrayList;

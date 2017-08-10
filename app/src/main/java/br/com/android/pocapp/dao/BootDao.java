@@ -53,4 +53,40 @@ public class BootDao extends PocDao{
         return true ? database.insert(ConstantsBootInfoTable.TABLE_BOOT_INFO, null, values)
                 != -1 : false;
     }
+
+    public Cursor getByType(String type) {
+        // columns to be returned
+        String[] columns = {
+                "*"
+        };
+
+        String selection =
+                ConstantsBootInfoTable.COLUMN_TYPE + " = ?";
+
+        String[] selectionArgs;
+        if(type.equals("On")) {
+             selectionArgs = new String[]{
+                     "1"
+             };
+        }else{
+             selectionArgs = new String[]{
+                     "0"
+             };
+        }
+
+        // Query user in table
+        Cursor cursor = database.query(
+                //Table to query
+                ConstantsBootInfoTable.TABLE_BOOT_INFO,
+                //columns to be returned
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+    }
 }

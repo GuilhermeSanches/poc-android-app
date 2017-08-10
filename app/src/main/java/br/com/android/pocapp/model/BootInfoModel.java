@@ -29,4 +29,8 @@ public class BootInfoModel {
     public void save(Integer type) {
         mBootDao.save(type);
     }
+
+    public Cursor getByType(String type) {
+        return mBootDao.getByType(type);
+    }
 }
