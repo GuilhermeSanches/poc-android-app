@@ -26,6 +26,9 @@ import br.com.android.pocapp.presenter.BootPresenter;
 
 public class BootInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    /**
+     * Instance of presenter view
+     */
     private BootPresenter mBootPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,11 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
         mBootPresenter.list();
     }
 
+    /**
+     * Set params to spinner in actionBar
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar_spinner, menu);
@@ -44,6 +52,9 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         spinner.setMinimumWidth(100);
 
+        /**
+         * Settings of adapter to spinner
+         */
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.spinner_list_item_array, R.layout.spinner_item_custom);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -52,10 +63,20 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
         return true;
     }
 
+    /*
+     * Return this context view
+     */
     public Context getActivityContext() {
         return this;
     }
 
+    /**
+     * Method to listener click in option menu
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if(i == 0){

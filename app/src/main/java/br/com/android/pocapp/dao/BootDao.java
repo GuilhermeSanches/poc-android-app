@@ -22,6 +22,10 @@ public class BootDao extends PocDao{
         super(context);
     }
 
+    /**
+     * Method to return list of boot info
+     * @return
+     */
     public Cursor list() {
 
         // columns to be returned
@@ -45,6 +49,11 @@ public class BootDao extends PocDao{
 
     }
 
+    /**
+     * Method to create query post new boot info
+     * @param type
+     * @return
+     */
     public boolean save(Integer type) {
         ContentValues values;
 

@@ -7,9 +7,9 @@ import android.content.Intent;
 import br.com.android.pocapp.dao.BootDao;
 
 /**
+ * This class build an broadcast receiver of events shutdown and start device status
  * Created by guilherme.sanches on 09/08/2017.
  */
-
 public class BootBroadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

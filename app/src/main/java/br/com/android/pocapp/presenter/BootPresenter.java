@@ -25,16 +25,35 @@ import br.com.android.pocapp.view.activities.BootInfoActivity;
 
 public class BootPresenter {
 
+    /**
+     * Instance of the activity
+     */
     private BootInfoActivity mBootActivity;
 
+    /**
+     * Instance of model
+     */
     private BootInfoModel mBootModel;
 
+    /**
+     * {@link RecyclerView} in UI
+     */
     private RecyclerView mRecView;
 
+    /**
+     * Manager linear layout
+     */
     private LinearLayoutManager mLayoutManager;
 
+    /**
+     * Adapter to {@link RecyclerView}
+     */
     private BootAdapter adapter;
 
+    /**
+     * Constructor of class
+     * @param mBootActivity
+     */
     public BootPresenter(BootInfoActivity mBootActivity) {
         this.mBootActivity = mBootActivity;
         this.mBootModel = new BootInfoModel(this);
@@ -43,18 +62,30 @@ public class BootPresenter {
         this.mRecView.setLayoutManager(this.mLayoutManager);
     }
 
+    /**
+     * Call list method in model
+     */
     public void list() {
         Cursor cursor =  mBootModel.list();
         ArrayList<BootInfo> list =  formatData(cursor);
         setAdapterView(list);
     }
 
+    /**
+     * Method to call get with params type
+     * @param type
+     */
     public void getByType(String type) {
         Cursor cursor =  mBootModel.getByType(type);
         ArrayList<BootInfo> list =  formatData(cursor);
         setAdapterView(list);
     }
 
+    /**
+     * This method convert {@link Cursor} to {@link ArrayList}
+     * @param cursor
+     * @return
+     */
     private ArrayList<BootInfo> formatData(Cursor cursor) {
         ArrayList<BootInfo> mArrayList = new ArrayList<>();
         cursor.moveToFirst();
@@ -63,7 +94,6 @@ public class BootPresenter {
             bootInfo.setmType(cursor.getInt(cursor.getColumnIndex(ConstantsBootInfoTable.COLUMN_TYPE)));
             String strCursor = cursor.getString(cursor.getColumnIndex(
                             ConstantsBootInfoTable.COLUMN_TIME));
-            Log.i("teste 2: ", strCursor);
             bootInfo.setmTime(strCursor);
             mArrayList.add(bootInfo);
             cursor.moveToNext();
@@ -71,15 +101,29 @@ public class BootPresenter {
         return mArrayList;
     }
 
+    /**
+     * Call method sabe in model
+     * @param type
+     */
     public void saveEvent(Integer type) {
         this.mBootModel.save(type);
     }
 
+    /**
+     * Constructor of class
+     * @param list
+     */
     private void setAdapterView(ArrayList<BootInfo> list) {
         adapter = new BootAdapter(list);
         mRecView.setAdapter(adapter);
     }
 
+    /**
+     * Method to format date in view
+     * @param mili
+     * @param format
+     * @return
+     */
     public String getDateString(long mili, String format) {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         Calendar calendar = Calendar.getInstance();

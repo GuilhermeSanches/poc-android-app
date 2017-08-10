@@ -6,9 +6,21 @@ package br.com.android.pocapp.domain;
 
 public class BootInfo {
 
+    /**
+     * Time of event
+     */
     private String mTime;
+
+    /**
+     * Type of event
+     */
     private Integer mType;
 
+
+    /**
+     * getters and setters
+     * @return
+     */
     public String getmTime() {
         return mTime;
     }
@@ -21,6 +33,10 @@ public class BootInfo {
         return mType;
     }
 
+    /**
+     * Constructor of model
+     * @param mType
+     */
     public void setmType(Integer mType) {
         this.mType = mType;
     }

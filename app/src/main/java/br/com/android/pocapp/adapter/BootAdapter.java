@@ -18,8 +18,15 @@ import br.com.android.pocapp.domain.BootInfo;
 
 public class BootAdapter extends RecyclerView.Adapter<BootHolder> {
 
+    /**
+     * Array aux to boot info
+     */
     private ArrayList<BootInfo> mDatesBoot;
 
+    /**
+     * Constructor of class
+     * @param dates
+     */
     public BootAdapter(ArrayList<BootInfo> dates) {
         this.mDatesBoot = dates;
     }
