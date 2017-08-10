@@ -40,5 +40,5 @@ In this small example application, the following patterns and features have been
 Screenshots
 -------------------
 
-![Login](https://github.com/GuilhermeSanches/poc-android-app/blob/master/screenshots/1.png=100x20 "Login" )
+![Login](https://github.com/GuilhermeSanches/poc-android-app/blob/master/screenshots/1.png =100x20 "Login" )
 
