@@ -3,6 +3,7 @@ package br.com.android.pocapp.presenter;
 import android.content.Context;
 import android.widget.Toast;
 
+import br.com.android.pocapp.R;
 import br.com.android.pocapp.domain.UserEntity;
 import br.com.android.pocapp.model.UserModel;
 import br.com.android.pocapp.view.activities.UserInfoActivity;
@@ -58,10 +59,10 @@ public class UserInfoPresenter {
      */
     public void checkUserRegistration(boolean results) {
         if(results){
-            Toast.makeText(mUserInfoActivity, "Usuário salvo com sucesso.", Toast.LENGTH_LONG).show();
+            Toast.makeText(mUserInfoActivity, R.string.user_sucess_save, Toast.LENGTH_LONG).show();
             mUserInfoActivity.backView();
         }else{
-            Toast.makeText(mUserInfoActivity, "Erro ao salvar usuário.", Toast.LENGTH_LONG).show();
+            Toast.makeText(mUserInfoActivity, R.string.error_in_save_user, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -84,6 +85,6 @@ public class UserInfoPresenter {
      * Toast to show empty fields
      */
     public void showToastEmptyFields() {
-        Toast.makeText(mUserInfoActivity, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
+        Toast.makeText(mUserInfoActivity, R.string.empty_fields, Toast.LENGTH_LONG).show();
     }
 }

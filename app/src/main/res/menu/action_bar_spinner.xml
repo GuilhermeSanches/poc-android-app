@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/spinner"
-        android:title="ActionBar Spinner"
+        android:title="@string/actionbar_spinner"
         app:actionViewClass="android.widget.Spinner"
         android:background="#fff"
         app:showAsAction="always" />
     <item
         android:id="@+id/calendar"
         android:background="#fff"
-        android:title="Filtrar por data"
+        android:title="@string/filter_by_date"
         android:icon="@drawable/ic_date_range_white_24px"
         app:showAsAction="always" />
 </menu>

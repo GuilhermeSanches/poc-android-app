@@ -114,7 +114,7 @@ public class HomePresenter {
             if(mProgress.getVisibility() == View.VISIBLE){
                 mProgress.setVisibility(View.INVISIBLE);
             }
-            mTextUpdate.setText("Atualizado em: " +parseDateToStr(new Date()));
+            mTextUpdate.setText("Atualizado em: "+parseDateToStr(new Date()));
             JSONArray array = response.getJSONArray("results");
             for (int i=0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);

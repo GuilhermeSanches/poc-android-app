@@ -1,9 +1,30 @@
 <resources>
     <string name="app_name">StarWars</string>
     <string name="splash_activity_title">StarWars</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_user_title">Novo usuário</string>
     <string name="home_page_title">Home</string>
+    <string name="boot_info">Boot info</string>
+    <string name="update_text">Atualizar</string>
+    <string name="go_back_text">Sair</string>
+    <string name="filter_by_date">Filtrar por data</string>
+    <string name="actionbar_spinner">ActionBar Spinner</string>
+    <string name="name_text">Nome</string>
+    <string name="email_text">E-mail</string>
+    <string name="pass_text">Senha</string>
+    <string name="phone_text">Telefone</string>
+    <string name="cpf_text">CPF</string>
+    <string name="register_text">Registrar</string>
+    <string name="empty_list_text">Ops! Sua lista de eventos está vazia.</string>
+    <string name="button_login_text">Entrar</string>
+    <string name="new_user_text">Não possui conta ?</string>
+    <string name="button_register_text">Registre-se</string>
+    <string name="update_api_text">Atualizado em: </string>
+    <string name="wellcome_text">Seja bem vindo!</string>
+    <string name="login_invalid">Usuário e/ou senha inválido!</string>
+    <string name="user_sucess_save">Usuário salvo com sucesso.</string>
+    <string name="error_in_save_user">Erro ao salvar usuário.</string>
+    <string name="empty_fields">Preencha todos os campos!</string>
+    <string name="release_date_sufix">Lançado em: </string>
 </resources>

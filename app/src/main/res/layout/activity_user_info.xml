@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nome"
+            android:hint="@string/name_text"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="E-mail"
+            android:hint="@string/email_text"
             android:inputType="textWebEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Senha"
+            android:hint="@string/pass_text"
             android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Telefone"
+            android:hint="@string/phone_text"
             android:inputType="phone" />
     </android.support.design.widget.TextInputLayout>
 
@@ -121,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="CPF"
+            android:hint="@string/cpf_text"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 
@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="Registrar"
+        android:text="@string/register_text"
         android:textColor="@android:color/white"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"

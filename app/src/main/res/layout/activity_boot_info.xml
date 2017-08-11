@@ -43,7 +43,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Ops! Sua lista de eventos está vazia."
+            android:text="@string/empty_list_text"
             android:textSize="18sp" />
 
     </LinearLayout>

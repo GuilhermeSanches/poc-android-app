@@ -6,18 +6,18 @@
     <item
         android:id="@+id/action_boot_info"
         android:orderInCategory="100"
-        android:title="Boot info"
+        android:title="@string/boot_info"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
-        android:title="Atualizar"
+        android:title="@string/update_text"
         android:icon="@drawable/ic_refresh_black_24dp"
         app:showAsAction="always" />
     <item
         android:id="@+id/logout"
         android:orderInCategory="100"
-        android:title="Sair"
+        android:title="@string/go_back_text"
         app:showAsAction="never" />
 </menu>
