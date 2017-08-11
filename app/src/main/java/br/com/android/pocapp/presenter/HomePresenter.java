@@ -1,10 +1,13 @@
 package br.com.android.pocapp.presenter;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +17,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import br.com.android.pocapp.R;
 import br.com.android.pocapp.view.adapter.FilmsAdapter;
@@ -61,6 +67,11 @@ public class HomePresenter {
      */
     private ProgressBar mProgress;
 
+    /*
+     * Show update date of call get api
+     */
+    private TextView mTextUpdate;
+
     /**
      * Constructor of class
      * @param mHomeActivity
@@ -74,6 +85,7 @@ public class HomePresenter {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mListFilms = new ArrayList<Films>();
         mProgress = (ProgressBar) mHomeActivity.findViewById(R.id.progressBar2);
+        mTextUpdate = (TextView) mHomeActivity.findViewById(R.id.textViewUpdate);
     }
 
     /**
@@ -102,6 +114,7 @@ public class HomePresenter {
             if(mProgress.getVisibility() == View.VISIBLE){
                 mProgress.setVisibility(View.INVISIBLE);
             }
+            mTextUpdate.setText("Atualizado em: " +parseDateToStr(new Date()));
             JSONArray array = response.getJSONArray("results");
             for (int i=0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);
@@ -121,6 +134,24 @@ public class HomePresenter {
     }
 
     /*
+     * Return the context application
+     */
+    public Activity getContext() {
+        return mHomeActivity.getActivityContext();
+    }
+
+    /*
+     *parse Date to String
+     */
+    private String parseDateToStr(Date date){
+        String resultDate;
+        SimpleDateFormat dateFormat;
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        resultDate = dateFormat.format(date);
+        return resultDate;
+    }
+
+    /*
      * Format date String to Date
      */
     private Date formatDate(String dateStr){
@@ -132,5 +163,12 @@ public class HomePresenter {
             e.printStackTrace();
         }
         return date;
+    }
+
+    /*
+     * Call asyncTask to get list films
+     */
+    public void setTimeAsyncTask() {
+        mFilmsModel.callApiScheduler();
     }
 }

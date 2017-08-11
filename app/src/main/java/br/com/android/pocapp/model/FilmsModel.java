@@ -2,15 +2,19 @@ package br.com.android.pocapp.model;
 
 import android.util.Log;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestHandle;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import br.com.android.pocapp.presenter.HomePresenter;
 import br.com.android.pocapp.rest.tasks.HttpUtils;
+import br.com.android.pocapp.tasks.FilmsAsyncTask;
+import br.com.android.pocapp.view.activities.HomeActivity;
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -58,4 +62,28 @@ public class FilmsModel{
         }
     };
 
+
+    /*
+     * Call list films in interval of 10 seconds
+     */
+    public void callApiScheduler() {
+        ScheduledExecutorService scheduler =
+                Executors.newSingleThreadScheduledExecutor();
+
+        scheduler.scheduleAtFixedRate
+                (new Runnable() {
+                    public void run() {
+                        mPresenterHome.getContext().runOnUiThread(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        new FilmsAsyncTask(
+                                                (HomeActivity) mPresenterHome.getContext(),
+                                                mPresenterHome).execute();
+                                    }
+                                }
+                        );
+                    }
+                }, 0, 10, TimeUnit.SECONDS);
+    }
 }

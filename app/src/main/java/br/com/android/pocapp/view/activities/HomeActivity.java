@@ -1,11 +1,17 @@
 package br.com.android.pocapp.view.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import br.com.android.pocapp.R;
 import br.com.android.pocapp.presenter.HomePresenter;
@@ -28,8 +34,11 @@ public class HomeActivity extends AppCompatActivity {
             mPresenterHome = new HomePresenter(this);
         }
 
+        mPresenterHome.setTimeAsyncTask();
+
         mPresenterHome.list();
     }
+
 
     /**
      * Inflater menu itens
@@ -61,6 +70,10 @@ public class HomeActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public HomeActivity getActivityContext() {
+        return this;
     }
 
     @Override
