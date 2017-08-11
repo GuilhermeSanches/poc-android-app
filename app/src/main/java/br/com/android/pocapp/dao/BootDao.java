@@ -66,6 +66,11 @@ public class BootDao extends PocDao{
                 != -1 : false;
     }
 
+    /**
+     * Method to query list events by type
+     * @param type
+     * @return
+     */
     public Cursor getByType(String type) {
         // columns to be returned
         String[] columns = {
@@ -102,6 +107,13 @@ public class BootDao extends PocDao{
 
     }
 
+    /**
+     * Method to list event by date
+     * @param year of date
+     * @param month of date
+     * @param day of date
+     * @return Cursor database query
+     */
     public Cursor getByDate(int year, int month, int day) {
         String date = formatDateToQuery(year, month, day);
 
@@ -134,6 +146,13 @@ public class BootDao extends PocDao{
 
     }
 
+    /**
+     * Parse values to date
+     * @param year of date
+     * @param month of date
+     * @param day of date
+     * @return Date formatted in {@link String}
+     */
     private String formatDateToQuery(int year, int month, int day) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();

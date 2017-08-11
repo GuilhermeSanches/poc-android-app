@@ -56,6 +56,9 @@ public class HomePresenter {
      */
     private RecyclerView.LayoutManager mLayoutManager;
 
+    /**
+     * Instance of progress bar in list
+     */
     private ProgressBar mProgress;
 
     /**
@@ -78,6 +81,7 @@ public class HomePresenter {
      */
     public void list() {
         try {
+            // Set progress visible
             mProgress.setVisibility(View.VISIBLE);
             mFilmsModel.list();
         } catch (JSONException e) {
@@ -94,6 +98,7 @@ public class HomePresenter {
     public void receiveList(JSONObject response) {
         ArrayList<Films> films = new ArrayList<Films>();
         try {
+            // Check progress and set invisible if exists
             if(mProgress.getVisibility() == View.VISIBLE){
                 mProgress.setVisibility(View.INVISIBLE);
             }
