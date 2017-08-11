@@ -1,7 +1,10 @@
 package br.com.android.pocapp.presenter;
 
+import android.app.ProgressDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +56,8 @@ public class HomePresenter {
      */
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private ProgressBar mProgress;
+
     /**
      * Constructor of class
      * @param mHomeActivity
@@ -65,6 +70,7 @@ public class HomePresenter {
         mLayoutManager = new LinearLayoutManager(mHomeActivity);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mListFilms = new ArrayList<Films>();
+        mProgress = (ProgressBar) mHomeActivity.findViewById(R.id.progressBar2);
     }
 
     /**
@@ -72,6 +78,7 @@ public class HomePresenter {
      */
     public void list() {
         try {
+            mProgress.setVisibility(View.VISIBLE);
             mFilmsModel.list();
         } catch (JSONException e) {
             e.printStackTrace();
@@ -87,6 +94,9 @@ public class HomePresenter {
     public void receiveList(JSONObject response) {
         ArrayList<Films> films = new ArrayList<Films>();
         try {
+            if(mProgress.getVisibility() == View.VISIBLE){
+                mProgress.setVisibility(View.INVISIBLE);
+            }
             JSONArray array = response.getJSONArray("results");
             for (int i=0; i < array.length(); i++) {
                 JSONObject obj = array.getJSONObject(i);

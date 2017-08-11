@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CircularProgressCustom" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#e5b13a</item>
+        <item name="colorPrimary">#e5b13a</item>
+        <item name="colorPrimaryDark">#e5b13a</item>
+    </style>
+
 </resources>
