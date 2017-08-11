@@ -73,7 +73,6 @@ public class BootPresenter {
         setAdapterView(list);
     }
 
-
     /**
      * Method to call get with params type
      * @param type to filter

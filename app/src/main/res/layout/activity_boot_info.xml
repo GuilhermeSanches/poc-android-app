@@ -20,11 +20,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical" android:layout_width="0dp"
         android:background="#fff"
         android:id="@+id/empty_list"
         android:visibility="gone"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
 
         <ImageView
             android:id="@+id/imageViewEmpty"

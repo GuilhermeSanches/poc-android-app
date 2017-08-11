@@ -24,9 +24,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // Start presenter view
-        mPresenterHome = new HomePresenter(this);
+        if(mPresenterHome == null){
+            mPresenterHome = new HomePresenter(this);
+        }
     }
-
 
     /**
      * Inflater menu itens

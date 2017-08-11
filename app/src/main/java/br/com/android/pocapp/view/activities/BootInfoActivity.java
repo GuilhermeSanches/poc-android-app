@@ -31,7 +31,9 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
         datePickerDialog = new DatePickerDialog(
                 this.getActivityContext(), this, 2017, 7, 10);
 
-        mBootPresenter = new BootPresenter(this);
+        if(mBootPresenter == null){
+            mBootPresenter = new BootPresenter(this);
+        }
 
         mBootPresenter.list();
     }
