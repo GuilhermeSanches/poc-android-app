@@ -9,8 +9,10 @@ What was used ?
 In this small example application, the following patterns and features have been used ... 
 
 > **Patterns:**
->
-> - Design Pattern M-V-P.
+
+> - Design Pattern MVP.
+> - Data access object.
+> - Singleton.
 > - Code Conventions .
 > - Material Designer.
 
@@ -27,11 +29,17 @@ In this small example application, the following patterns and features have been
 > **Elements UI:**
 > 
 > - ConstrantLayout.
+> - LinearLayout.
+> - RelativeLayout.
 > - RecycleView.
 > - CardView.
 > - DatePicker.
 > - CollapsedToolbar.
 > - Spinner.
+> - TextView.
+> - ImageView.
+> - Button.
+> - TextInputLayout.
 
 > **Broadcast receiver:**
 > 
