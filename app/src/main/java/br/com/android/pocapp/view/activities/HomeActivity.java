@@ -27,6 +27,8 @@ public class HomeActivity extends AppCompatActivity {
         if(mPresenterHome == null){
             mPresenterHome = new HomePresenter(this);
         }
+
+        mPresenterHome.list();
     }
 
     /**
@@ -65,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // Get list films StarWarS
-        mPresenterHome.list();
+//        mPresenterHome.list();
     }
 
 }

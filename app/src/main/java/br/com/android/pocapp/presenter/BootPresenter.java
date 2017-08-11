@@ -73,6 +73,7 @@ public class BootPresenter {
         setAdapterView(list);
     }
 
+
     /**
      * Method to call get with params type
      * @param type to filter
@@ -113,6 +114,7 @@ public class BootPresenter {
         if (list.size() == 0){
             mRecView.setVisibility(View.GONE);
             mBootActivity.findViewById(R.id.empty_list).setVisibility(View.VISIBLE);
+            mRecView.setAdapter(mAdapter);
         }else{
             mRecView.setVisibility(View.VISIBLE);
             mBootActivity.findViewById(R.id.empty_list).setVisibility(View.GONE);

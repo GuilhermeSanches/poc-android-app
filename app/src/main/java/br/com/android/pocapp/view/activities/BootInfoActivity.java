@@ -35,7 +35,7 @@ public class BootInfoActivity extends AppCompatActivity implements AdapterView.O
             mBootPresenter = new BootPresenter(this);
         }
 
-        mBootPresenter.list();
+//        mBootPresenter.list();
     }
 
     /**

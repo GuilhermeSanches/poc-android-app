@@ -106,6 +106,9 @@ public class MainActivity extends Activity{
         mButtonLogin.setOnClickListener(RegisterLoginClickListener);
     }
 
+    /**
+     * @return Activity context
+     */
     public Context getActivityContext() {
         return this;
     }
