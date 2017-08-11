@@ -4,13 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 
 import br.com.android.pocapp.constants.ConstantsUserInfoTable;
+import br.com.android.pocapp.dao.factory.FactoryDao;
 import br.com.android.pocapp.domain.UserEntity;
 
 /**
  * Created by guilherme.sanches on 07/08/2017.
  * Class of methods CRUD of the table UserInfo
  */
-public class UserInfoDao extends PocDao {
+public class UserInfoDao {
+
+    private FactoryDao mFactoryDao;
 
     /**
      * Constructor of class
@@ -18,7 +21,7 @@ public class UserInfoDao extends PocDao {
      * @param context of app
      */
     public UserInfoDao(Context context) {
-        super(context);
+        mFactoryDao = new FactoryDao(context);
     }
 
     /**
@@ -39,7 +42,7 @@ public class UserInfoDao extends PocDao {
                 user.getmUserCpf());
         values.put(ConstantsUserInfoTable.COLUMN_PASSWORD,
                 user.getmUserPassword());
-        return true ? database.insert(ConstantsUserInfoTable.TABLE_USER_INFO, null, values)
-                    != -1 : false;
+        return mFactoryDao.getDatabase().insert(ConstantsUserInfoTable.TABLE_USER_INFO, null, values)
+                != -1;
     }
 }

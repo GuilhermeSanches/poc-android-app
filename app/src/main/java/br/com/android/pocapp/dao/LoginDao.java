@@ -4,19 +4,22 @@ import android.content.Context;
 import android.database.Cursor;
 
 import br.com.android.pocapp.constants.ConstantsUserInfoTable;
+import br.com.android.pocapp.dao.factory.FactoryDao;
 
 /**
  * Created by guilherme.sanches on 08/08/2017.
  */
 
-public class LoginDao extends PocDao{
+public class LoginDao {
+
+    private FactoryDao mFactoryDao;
     /**
      * Constructor of class
      *
      * @param context of app
      */
     public LoginDao(Context context) {
-        super(context);
+        mFactoryDao = new FactoryDao(context);
     }
 
     /**
@@ -40,7 +43,7 @@ public class LoginDao extends PocDao{
         };
 
         // Query user in table
-        Cursor cursor = database.query(
+        Cursor cursor = mFactoryDao.getDatabase().query(
                 //Table to query
                 ConstantsUserInfoTable.TABLE_USER_INFO,
                 //columns to be returned

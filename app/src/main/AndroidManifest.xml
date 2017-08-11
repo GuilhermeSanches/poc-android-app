@@ -24,10 +24,10 @@
         </activity>
         <activity
             android:name=".view.activities.UserInfoActivity"
-            android:label="Novo usuário" />
+            android:label="@string/new_user_title" />
         <activity
             android:name=".view.activities.HomeActivity"
-            android:label="Home" />
+            android:label="@string/home_page_title" />
         <activity android:label="Boot Info" android:name=".view.activities.BootInfoActivity"></activity>
         <receiver
             android:name="br.com.android.pocapp.broadcasts.BootBroadcast">

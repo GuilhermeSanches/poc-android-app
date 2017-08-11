@@ -1,8 +1,9 @@
-package br.com.android.pocapp.dao;
+package br.com.android.pocapp.dao.factory;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import br.com.android.pocapp.database.DatabaseHelper;
@@ -12,7 +13,7 @@ import br.com.android.pocapp.database.DatabaseHelper;
  * Class to access database
  */
 
-public class PocDao {
+public class FactoryDao {
 
     /**
      * Instance of database
@@ -33,7 +34,7 @@ public class PocDao {
      * Constructor of class
      * @param context of app
      */
-    public PocDao(Context context) {
+    public FactoryDao(Context context) {
         databaseHelper = DatabaseHelper.getDBHelper(context);
         try {
             database = databaseHelper.getWritableDatabase();
@@ -42,5 +43,8 @@ public class PocDao {
             exception.printStackTrace();
         }
 
+    }
+    public SQLiteDatabase getDatabase(){
+        return this.database;
     }
 }

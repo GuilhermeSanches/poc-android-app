@@ -5,24 +5,25 @@ import android.content.Context;
 import android.database.Cursor;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.SimpleFormatter;
 
 import br.com.android.pocapp.constants.ConstantsBootInfoTable;
+import br.com.android.pocapp.dao.factory.FactoryDao;
 
 /**
  * Created by guilherme.sanches on 09/08/2017.
  */
 
-public class BootDao extends PocDao{
+public class BootDao {
+
+    private FactoryDao mFactoryDao;
     /**
      * Constructor of class
      *
      * @param context of app
      */
     public BootDao(Context context) {
-        super(context);
+        mFactoryDao = new FactoryDao(context);
     }
 
     /**
@@ -37,7 +38,7 @@ public class BootDao extends PocDao{
         };
 
         // Query user in table
-        Cursor cursor = database.query(
+        Cursor cursor = mFactoryDao.getDatabase().query(
                 //Table to query
                 ConstantsBootInfoTable.TABLE_BOOT_INFO,
                 //columns to be returned
@@ -62,8 +63,8 @@ public class BootDao extends PocDao{
 
         values = new ContentValues();
         values.put(ConstantsBootInfoTable.COLUMN_TYPE, type);
-        return true ? database.insert(ConstantsBootInfoTable.TABLE_BOOT_INFO, null, values)
-                != -1 : false;
+        return mFactoryDao.getDatabase().insert(ConstantsBootInfoTable.TABLE_BOOT_INFO, null, values)
+                != -1;
     }
 
     /**
@@ -92,7 +93,7 @@ public class BootDao extends PocDao{
         }
 
         // Query user in table
-        Cursor cursor = database.query(
+        Cursor cursor = mFactoryDao.getDatabase().query(
                 //Table to query
                 ConstantsBootInfoTable.TABLE_BOOT_INFO,
                 //columns to be returned
@@ -131,7 +132,7 @@ public class BootDao extends PocDao{
 
 
         // Query user in table
-        Cursor cursor = database.query(
+        Cursor cursor = mFactoryDao.getDatabase().query(
                 //Table to query
                 ConstantsBootInfoTable.TABLE_BOOT_INFO,
                 //columns to be returned
