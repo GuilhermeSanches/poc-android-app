@@ -40,6 +40,7 @@ In this small example application, the following patterns and features have been
 > - ImageView.
 > - Button.
 > - TextInputLayout.
+> - ProgressBar.
 
 > **Broadcast receiver:**
 > 
