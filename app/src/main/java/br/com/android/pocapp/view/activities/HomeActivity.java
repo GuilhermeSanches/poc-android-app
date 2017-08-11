@@ -39,7 +39,6 @@ public class HomeActivity extends AppCompatActivity {
         mPresenterHome.list();
     }
 
-
     /**
      * Inflater menu itens
      * @param menu
@@ -74,13 +73,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public HomeActivity getActivityContext() {
         return this;
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // Get list films StarWarS
-//        mPresenterHome.list();
     }
 
 }
