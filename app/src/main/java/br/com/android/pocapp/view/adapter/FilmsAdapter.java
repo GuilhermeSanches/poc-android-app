@@ -47,7 +47,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsHolder> {
         holder.subTitle.setText( film.getmDirector());
         holder.firstLetter.setText(film.getmTitle().toString().charAt(0)+"");
         holder.releaseDate.setText("Lançado em: "+formatDate((film.getmReleaseDate())));
-       setAnimation(holder);
+//       setAnimation(holder);
     }
 
     /**

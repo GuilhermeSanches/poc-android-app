@@ -84,6 +84,6 @@ public class FilmsModel{
                                 }
                         );
                     }
-                }, 0, 10, TimeUnit.SECONDS);
+                }, 0, 10, TimeUnit.HOURS);
     }
 }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:focusable="true" android:focusableInTouchMode="true"
     tools:context="br.com.android.pocapp.view.activities.MainActivity">
 
     <ImageView
